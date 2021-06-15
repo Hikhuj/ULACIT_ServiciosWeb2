@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ViveroModelStoreContainer" CdmEntityContainer="ViveroEntities">
+    <EntitySetMapping Name="Plantas">
+      <EntityTypeMapping TypeName="ViveroModel.Planta">
+        <MappingFragment StoreEntitySet="Plantas">
+          <ScalarProperty Name="cod_planta" ColumnName="cod_planta" />
+          <ScalarProperty Name="nombre_planta" ColumnName="nombre_planta" />
+          <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+          <ScalarProperty Name="cod_tipo_planta" ColumnName="cod_tipo_planta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tipos_Planta">
+      <EntityTypeMapping TypeName="ViveroModel.Tipos_Planta">
+        <MappingFragment StoreEntitySet="Tipos_Planta">
+          <ScalarProperty Name="cod_tipo_planta" ColumnName="cod_tipo_planta" />
+          <ScalarProperty Name="nombre_tipo" ColumnName="nombre_tipo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

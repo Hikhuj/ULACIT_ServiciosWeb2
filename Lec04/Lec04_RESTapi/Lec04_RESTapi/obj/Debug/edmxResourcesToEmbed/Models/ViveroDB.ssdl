@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ViveroModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Plantas">
+    <Key>
+      <PropertyRef Name="cod_planta" />
+    </Key>
+    <Property Name="cod_planta" Type="int" Nullable="false" />
+    <Property Name="nombre_planta" Type="varchar" MaxLength="80" Nullable="false" />
+    <Property Name="cantidad" Type="int" Nullable="false" />
+    <Property Name="cod_tipo_planta" Type="int" />
+  </EntityType>
+  <EntityType Name="Tipos_Planta">
+    <Key>
+      <PropertyRef Name="cod_tipo_planta" />
+    </Key>
+    <Property Name="cod_tipo_planta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre_tipo" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Plantas_Tipos_Planta">
+    <End Role="Tipos_Planta" Type="Self.Tipos_Planta" Multiplicity="0..1" />
+    <End Role="Plantas" Type="Self.Plantas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tipos_Planta">
+        <PropertyRef Name="cod_tipo_planta" />
+      </Principal>
+      <Dependent Role="Plantas">
+        <PropertyRef Name="cod_tipo_planta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ViveroModelStoreContainer">
+    <EntitySet Name="Plantas" EntityType="Self.Plantas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tipos_Planta" EntityType="Self.Tipos_Planta" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Plantas_Tipos_Planta" Association="Self.FK_Plantas_Tipos_Planta">
+      <End Role="Tipos_Planta" EntitySet="Tipos_Planta" />
+      <End Role="Plantas" EntitySet="Plantas" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
